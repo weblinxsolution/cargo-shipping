@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Apex Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.min.css" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
@@ -478,15 +481,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Order Summary</h4>
-                                <div id="morris-bar-chart"></div>
+                                <div id="chart"></div>
                             </div>
                         </div>
 
                     </div>
-                    
+
                 </div>
 
-             
+
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -515,7 +518,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>PICKUP DATE</th>
-                                                    <th>	INVOICE NO.</th>
+                                                    <th> INVOICE NO.</th>
                                                     <th>TRANSIT TIME</th>
                                                     <th>STORAGE DAY</th>
                                                     <!-- <th>Payment Method</th>
@@ -639,12 +642,12 @@
                             </div>
                         </div> -->
                     </div>
-                   
+
                 </div>
 
 
 
-                
+
             </div>
             <!-- #/ container -->
         </div>
@@ -673,6 +676,60 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script>
+        var options = {
+            series: [{
+                name: 'Net Profit',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Revenue',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Free Cash Flow',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
